@@ -5,7 +5,7 @@ body {
     font-family: 'Megrim', cursive;
 }
 
-#invitation, #workout {
+#invitation, #workout, #wimp {
     margin-top: 10px;
     background-color: rgba(230, 171, 55, .5);
     padding: 5vh;
@@ -16,9 +16,10 @@ body {
     margin-bottom: 5px;
 }
 
-#workout {
+#workout, #wimp {
     display: none;
 }
+
 
 
 
