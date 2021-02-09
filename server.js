@@ -23,7 +23,7 @@ const db = require("./models");
 
 // Test route
 app.get("/", (req, res) => {
-    res.send("GTFO motherfucker")
+    res.sendFile("./index.html")
 });
 
 // Seed data
