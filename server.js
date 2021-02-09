@@ -11,6 +11,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'))
 
+// Connect to mongoose database
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/firebending101", {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+});
+
+// Require in our models from index.js
+const db = require("./models");
+
 // Test route
 app.get("/", (req, res) => {
     res.send("GTFO motherfucker")
