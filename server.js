@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/firebending101"
 // Require in our models from index.js
 const db = require("./models");
 
-// Test route
+// Home route
 app.get("/", (req, res) => {
     res.sendFile("./index.html")
 });
@@ -176,7 +176,7 @@ app.get("/seeddays", (req, res) => {
         console.log(`Here's all your workouts: ${result, null, 2}`)
         db.Day.create([
             {
-                name: "Day One",
+                name: "Day 1",
                 workouts: [
                     result[Math.floor(Math.random() * result.length)]._id,
                     result[Math.floor(Math.random() * result.length)]._id,
@@ -184,7 +184,7 @@ app.get("/seeddays", (req, res) => {
                 ]
             },
             {
-                name: "Day Two",
+                name: "Day 2",
                 workouts: [
                     result[Math.floor(Math.random() * result.length)]._id,
                     result[Math.floor(Math.random() * result.length)]._id,
@@ -192,7 +192,7 @@ app.get("/seeddays", (req, res) => {
                 ]
             },
             {
-                name: "Day Three",
+                name: "Day 3",
                 workouts: [
                     result[Math.floor(Math.random() * result.length)]._id,
                     result[Math.floor(Math.random() * result.length)]._id,
@@ -200,7 +200,7 @@ app.get("/seeddays", (req, res) => {
                 ]
             },
             {
-                name: "Day Four",
+                name: "Day 4",
                 workouts: [
                     result[Math.floor(Math.random() * result.length)]._id,
                     result[Math.floor(Math.random() * result.length)]._id,
@@ -208,7 +208,7 @@ app.get("/seeddays", (req, res) => {
                 ]
             },
             {
-                name: "Day Five",
+                name: "Day 5",
                 workouts: [
                     result[Math.floor(Math.random() * result.length)]._id,
                     result[Math.floor(Math.random() * result.length)]._id,
@@ -216,7 +216,7 @@ app.get("/seeddays", (req, res) => {
                 ]
             },
             {
-                name: "Day Six",
+                name: "Day 6",
                 workouts: [
                     result[Math.floor(Math.random() * result.length)]._id,
                     result[Math.floor(Math.random() * result.length)]._id,
@@ -224,7 +224,7 @@ app.get("/seeddays", (req, res) => {
                 ]
             },
             {
-                name: "Day Seven",
+                name: "Day 7",
                 workouts: [
                     result[Math.floor(Math.random() * result.length)]._id,
                     result[Math.floor(Math.random() * result.length)]._id,
@@ -242,8 +242,6 @@ app.get("/seeddays", (req, res) => {
     })
 })
 
-
-
 // View data
 app.get("/api/workouts", (req, res) => {
     db.Workout.find({}).then(data => {
@@ -251,7 +249,7 @@ app.get("/api/workouts", (req, res) => {
         res.json(data);
     }).catch((err) => {
         if (err) console.log(err.message)
-        res.status(500).send("Uncle Iroh is disappointed in you.")
+        res.status(500).send("Uncle Iroh is sad because you have lost your way.")
     })
 });
 
@@ -300,7 +298,8 @@ app.post("/api/workouts", (req, res) => {
 
 })
 
-app.post("/update:id", (req, res) => {
+// Update existing data
+app.put("/update:id", (req, res) => {
     db.Workout.update({ _id: mongojs.ObjectId(req.params.id) }, {
         $set: {
             finished: req.body.finished
@@ -313,11 +312,6 @@ app.post("/update:id", (req, res) => {
         res.status(500).send("Uncle Iroh is sad because you have lost your way.")
     })
 })
-
-
-
-
-
 
 // Instruct server to listen on correct environment port
 app.listen(PORT, function () {

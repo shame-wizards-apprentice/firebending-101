@@ -1,3 +1,25 @@
 body {
-    background-color: salmon;
+    background-image: url("/assets/zuko.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Megrim', cursive;
 }
+
+#invitation, #workout {
+    margin-top: 10px;
+    background-color: rgba(230, 171, 55, .5);
+    padding: 5vh;
+    border-radius: 10px;
+}
+
+#accept {
+    margin-bottom: 5px;
+}
+
+#workout {
+    display: none;
+}
+
+
+
+
