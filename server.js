@@ -300,6 +300,20 @@ app.post("/api/workouts", (req, res) => {
 
 })
 
+app.post("/update:id", (req, res) => {
+    db.Workout.update({ _id: mongojs.ObjectId(req.params.id) }, {
+        $set: {
+            finished: req.body.finished
+        }
+    }).then(data => {
+        console.log(`So you finished one, eh? ${data, null, 2}`)
+        res.json(data)
+    }).catch((err) => {
+        if (err) console.log(err.message);
+        res.status(500).send("Uncle Iroh is sad because you have lost your way.")
+    })
+})
+
 
 
 
