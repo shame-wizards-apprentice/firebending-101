@@ -11,7 +11,8 @@ const WorkoutSchema = new Schema({
     sets: Number,
     reps: Number,
     duration: Number,
-    isCardio: Boolean
+    isCardio: Boolean,
+    finished: Boolean
 });
 
 // Export model
