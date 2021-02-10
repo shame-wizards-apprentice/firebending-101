@@ -24,6 +24,13 @@ $("#okay").click(e => {
     $("#wimp").css("display", "none");
     $("#invitation").css("display", "block")
 
+});
+
+// Add workout to day
+$(".add-btn").click(function (e) {
+    e.preventDefault();
+    const name = $(this).data("name")
+    console.log($(this).data("name"))
 })
 
 // Render a week of workouts
@@ -56,3 +63,6 @@ function renderWorkouts() {
     })
 
 }
+
+
+

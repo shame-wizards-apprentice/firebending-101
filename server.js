@@ -299,7 +299,7 @@ app.post("/api/workouts", (req, res) => {
 })
 
 // Update existing data
-app.put("/update:id", (req, res) => {
+app.put("/update/:id", (req, res) => {
     db.Workout.update({ _id: mongojs.ObjectId(req.params.id) }, {
         $set: {
             finished: req.body.finished
