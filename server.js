@@ -286,8 +286,9 @@ app.post("/api/days", (req, res) => {
 
 
 app.post("/api/workouts", (req, res) => {
+    console.log(req.body);
     db.Workout.create(req.body).then(data => {
-        db.Day.findOneAndUpdate({ _id: req.body.dayId }, { $push: { workouts: data._id } }).then(dbDay => {
+        db.Day.findOneAndUpdate({}, { $push: { workouts: data._id } }).then(dbDay => {
             console.log(`Here's your new day ${JSON.stringify(dbDay, null, 2)}`);
             res.json(dbDay)
         })

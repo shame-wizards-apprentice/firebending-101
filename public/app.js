@@ -29,8 +29,36 @@ $("#okay").click(e => {
 // Add workout to day
 $(".add-btn").click(function (e) {
     e.preventDefault();
-    const name = $(this).data("name")
-    console.log($(this).data("name"))
+    const name = $(this).data("name");
+    const type = $(this).data("type");
+
+    // Parse integers for data attributes in html
+    const weight = parseInt($(this).data("weight"));
+    const sets = parseInt($(this).data("sets"));
+    const reps = parseInt($(this).data("reps"));
+    const duration = parseInt($(this).data("duration"));
+
+    // This takes a string and evaluates it for truthiness, then returns true or false. Because workouts where cardio is false have data attributes set to empty strings in html, they will evaluate to false while workouts where cardio is true will evalute to true as their attributes are a string labeled "true". I am using this method to "parse" a boolean from a string.
+    const cardio = !!$(this).data("cardio");
+
+    console.log(name);
+    console.log(type);
+    console.log(weight);
+    console.log(sets);
+    console.log(reps);
+    console.log(duration);
+    console.log(cardio);
+    const newWorkout = { name: name, type: type, weight: weight, sets: sets, reps: reps, duration: duration, cardio: cardio }
+    console.log(newWorkout);
+    $.ajax({
+        url: "/api/workouts",
+        method: "POST",
+        data: newWorkout
+    }).then(dbworkout => {
+        // TODO: add note about adding workout to routine 
+        console.log(dbworkout);
+        $(this).append(`You have officiall added ${dbworkout} to your routine.`);
+    })
 })
 
 // Render a week of workouts
