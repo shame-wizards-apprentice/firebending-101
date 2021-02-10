@@ -2,6 +2,7 @@
 $("#accept").click(e => {
     e.preventDefault();
     $("#invitation").css("display", "none");
+    $("#workout").css("display", "block")
     renderWorkouts();
 })
 
@@ -27,6 +28,26 @@ function renderWorkouts() {
         url: "/populateddays",
         method: "GET",
     }).then(data => {
-        console.log(`Here's your data: ${JSON.stringify(data, null, 2)}`)
+        // Day 1 workout plan
+        $("#day-1").append(`But if you don't respect it, it will chew you up and spit you out like an angry komodo rhino! Zuko demands ${data[0].workouts[0].sets} sets of ${data[0].workouts[0].name} and ${data[0].workouts[1].sets} sets of ${data[0].workouts[1].name}. What's left of you will attempt ${data[0].workouts[2].sets} sets of ${data[0].workouts[2].name}. Quickly now!`);
+
+        // Day 2 workout plan
+        $("#day-2").append(`What was that? That was the worst firebending I've ever seen! For your incompetence, you must now complete ${data[1].workouts[0].sets} sets of ${data[1].workouts[0].name} and ${data[1].workouts[1].sets} sets of ${data[1].workouts[1].name}. After that, you'll do ${data[1].workouts[2].sets} sets of ${data[1].workouts[2].name}, or die trying. Next time Zuko will not be so forgiving.`);
+
+        // Day 3 workout plan
+        $("#day-3").append(`To improve, you must learn from the ancient Sun Warriots. Do ${data[2].workouts[0].sets} sets of ${data[2].workouts[0].name} and ${data[2].workouts[1].sets} sets of ${data[2].workouts[1].name}. ${data[2].workouts[2].sets} sets of ${data[2].workouts[2].name} will be your reward for completing your task.`);
+
+        // Day 4 workout plan
+        $("#day-4").append(`You are slowly but surely washing off the stench of failure. Hurry! Complete ${data[3].workouts[0].sets} sets of ${data[3].workouts[0].name} and ${data[3].workouts[1].sets} sets of ${data[3].workouts[1].name}, followed by ${data[3].workouts[2].sets} sets of ${data[3].workouts[2].name}! Perhaps you can fight the Fire-Lord and live!`);
+
+        // Day 5 workout plan
+        $("#day-5").append(`Avatar Kyoshi offers you the wisdom that you must be decisive. ${data[4].workouts[0].sets} sets of ${data[4].workouts[0].name} followed by ${data[4].workouts[1].sets} sets of ${data[4].workouts[1].name} and ${data[4].workouts[2].sets} sets of ${data[4].workouts[2].name} will clear your mind and prepare you for the task at hand.`);
+
+        // Day 6 workout plan
+        $("#day-6").append(`If you want to be a bender, you have to let go of fear. You must now complete ${data[5].workouts[0].sets} sets of ${data[5].workouts[0].name} followed by ${data[5].workouts[1].sets} sets of ${data[5].workouts[1].name} and ${data[5].workouts[2].sets} sets of ${data[5].workouts[2].name}. You have covered much distance this week, and you must not lose sight of the finish line!`);
+
+        // Day 7 workout plan
+        $("#day-7").append(`The true mind can weather all the lies and illusions without being lost. The true heart can tough the poison of hatred without being harmed. Since beginningless time darkness thrives in the void, but always yields to purifying light. Anyway, do ${data[6].workouts[0].sets} sets of ${data[6].workouts[0].name}, ${data[6].workouts[1].sets} sets of ${data[6].workouts[1].name}, and ${data[6].workouts[2].sets} sets of ${data[6].workouts[2].name}. It is time, Avatar Aang. You are ready.`);
     })
+
 }

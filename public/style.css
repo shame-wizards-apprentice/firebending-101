@@ -20,6 +20,10 @@ body {
     display: none;
 }
 
+.card-image {
+    height: 50vh;
+}
+
 
 
 
