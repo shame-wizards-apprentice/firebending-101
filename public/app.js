@@ -1,8 +1,7 @@
 // Initialize dropdowns and modals
 $('.dropdown-trigger').dropdown();
-$(document).ready(function () {
-    $('.modal').modal();
-});
+$('.modal').modal();
+
 
 // Get rid of intro div, render week of workouts
 $("#accept").click(e => {
